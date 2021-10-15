@@ -5,6 +5,8 @@ require_once 'config.php';
 
 
 //auto load
-function _autoload($className){
-    require_once 'lib'.$className.'.php';
+function autoLoad($class_name){
+require_once 'lib/'.$class_name. '.php';
 }
+
+spl_autoload_register('autoLoad');

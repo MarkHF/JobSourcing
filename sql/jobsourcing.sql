@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 26, 2021 at 04:54 AM
+-- Generation Time: Oct 15, 2021 at 10:44 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -18,44 +18,8 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `jobsourcing`
+-- Database: `joblister`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `admin`
---
-
-CREATE TABLE `admin` (
-  `ID` int(11) NOT NULL,
-  `Name` varchar(20) NOT NULL,
-  `Address` varchar(50) NOT NULL,
-  `ContactEmail` varchar(50) NOT NULL,
-  `Username` varchar(20) NOT NULL,
-  `Password` varchar(20) NOT NULL,
-  `Remarks` varchar(100) NOT NULL,
-  `DateTimeCreated` timestamp NOT NULL DEFAULT current_timestamp(),
-  `DateTimeUpdated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `companies`
---
-
-CREATE TABLE `companies` (
-  `Cid` int(11) NOT NULL,
-  `Company` varchar(50) NOT NULL,
-  `Overview` varchar(250) NOT NULL,
-  `ContactUser` varchar(20) NOT NULL,
-  `ContactEmail;` varchar(20) NOT NULL,
-  `ContactNo` int(20) NOT NULL,
-  `Remarks` varchar(100) NOT NULL,
-  `DateTimeCreated` timestamp NOT NULL DEFAULT current_timestamp(),
-  `DateTimeUpdated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -64,21 +28,23 @@ CREATE TABLE `companies` (
 --
 
 CREATE TABLE `department` (
-  `Did` int(10) NOT NULL,
-  `Sid` int(11) NOT NULL,
-  `Course` text NOT NULL,
-  `Remarks` varchar(100) NOT NULL,
-  `DateTimeCreated` timestamp NOT NULL DEFAULT current_timestamp(),
-  `DateTimeUpdated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `id` int(20) NOT NULL,
+  `course` varchar(50) NOT NULL,
+  `remarks` varchar(200) NOT NULL,
+  `dateTimeCreated` timestamp NOT NULL DEFAULT current_timestamp(),
+  `dateTimeUpdated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `department`
 --
 
-INSERT INTO `department` (`Did`, `Sid`, `Course`, `Remarks`, `DateTimeCreated`, `DateTimeUpdated`) VALUES
-(1, 120120, 'BSCS', '', '2021-09-26 02:38:58', '2021-09-26 02:47:27'),
-(2, 123455, 'BSCrim', '', '2021-09-26 02:38:58', '2021-09-26 02:47:49');
+INSERT INTO `department` (`id`, `course`, `remarks`, `dateTimeCreated`, `dateTimeUpdated`) VALUES
+(1, 'BSCS', '', '2021-10-13 22:03:34', '2021-10-13 22:05:13'),
+(2, 'BSCrim', '', '2021-10-13 22:06:26', '2021-10-13 22:06:26'),
+(3, 'HRM', '', '2021-10-13 22:06:26', '2021-10-13 22:06:26'),
+(4, 'Business', '', '2021-10-13 22:07:43', '2021-10-13 22:07:43'),
+(5, 'BSA', '', '2021-10-13 22:07:58', '2021-10-13 22:07:58');
 
 -- --------------------------------------------------------
 
@@ -87,17 +53,32 @@ INSERT INTO `department` (`Did`, `Sid`, `Course`, `Remarks`, `DateTimeCreated`, 
 --
 
 CREATE TABLE `jobs` (
-  `Jid` int(11) NOT NULL,
-  `Did` int(11) NOT NULL,
-  `Cid` int(11) NOT NULL,
-  `JobTitle` varchar(50) NOT NULL,
-  `Description` varchar(100) NOT NULL,
-  `Salary` varchar(20) NOT NULL,
-  `Location` varchar(50) NOT NULL,
-  `Remarks` varchar(100) NOT NULL,
-  `DateTimeCreated` timestamp NOT NULL DEFAULT current_timestamp(),
-  `DateTimeUpdated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `id` int(20) NOT NULL,
+  `departmentID` int(20) NOT NULL,
+  `company` varchar(50) NOT NULL,
+  `companyOverview` varchar(500) NOT NULL,
+  `jobTitle` varchar(50) NOT NULL,
+  `time` varchar(20) NOT NULL,
+  `description` varchar(500) NOT NULL,
+  `requirements` varchar(500) NOT NULL,
+  `salary` varchar(50) NOT NULL,
+  `location` varchar(100) NOT NULL,
+  `contactUser` varchar(50) NOT NULL,
+  `contactEmail` varchar(50) NOT NULL,
+  `remarks` varchar(200) NOT NULL,
+  `dateTimeCreated` timestamp NOT NULL DEFAULT current_timestamp(),
+  `dateTimeUpdated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `jobs`
+--
+
+INSERT INTO `jobs` (`id`, `departmentID`, `company`, `companyOverview`, `jobTitle`, `time`, `description`, `requirements`, `salary`, `location`, `contactUser`, `contactEmail`, `remarks`, `dateTimeCreated`, `dateTimeUpdated`) VALUES
+(1, 1, 'Astra', 'We, at Astra (Philippines) Inc., are committed to: Develop the very best software and hardware solutions that satisfy customer requirements. Deal with customers and partners on principles of politeness, courtesy, humility and cooperation and safeguard our long-term relationships with them.', 'Junior-Programmer', 'Part-Time', 'A Computer Programmer, or Systems Programmer, writes code to help software applications operate more', '(1.) Ability to learn – being receptive to new ideas and concepts, and the commitment to practice them is what coding is all about.\r\n(2.) Work ethic – becoming a developer means lots of hard work and dedication. ...\r\n(3.) Problem-solver – You\'re going to use code to solve problems, so motivation is key!', '20k', 'Quezon City', 'mam mo', 'mama@gmail.com', '', '2021-10-13 22:21:43', '2021-10-15 06:55:20'),
+(2, 2, 'BANTAY INC', '', 'Guard', 'Full-Time', 'Security Guards duties often include securing premises and personnel by patrolling property, monitoring surveillance equipment and inspecting buildings and equipment. Security Guards duties can also access points as well as permitting or prohibiting entry.', '', '15k', 'Quezon City', 'papa mo', 'papa@gmail.com', '', '2021-10-13 22:21:43', '2021-10-15 03:54:44'),
+(3, 1, 'TECH', '', 'System Analyst', 'Full-Time', 'A Computer Programmer, or Systems Programmer, writes code to help software applications operate more', '', '25k', 'Quezon City', 'mame mo', 'mame@gmail.com', '', '2021-10-13 22:23:33', '2021-10-15 03:54:15'),
+(4, 5, 'Bangko', '', 'Taga bilang nang piso', 'Full-Time', 'Preparing accounts and tax returns. Monitoring spending and budgets. Auditing and analysing financial performance. ... Compiling and presenting financial and budget reports. Ensure that financial statements and records comply with laws and regulations.', '', '20k', 'Taguig', 'ate momo', 'ate@gmail.com', '', '2021-10-14 00:57:56', '2021-10-15 03:53:39');
 
 -- --------------------------------------------------------
 
@@ -106,90 +87,57 @@ CREATE TABLE `jobs` (
 --
 
 CREATE TABLE `students` (
-  `Sid` int(10) NOT NULL,
-  `FirstName` varchar(20) NOT NULL,
-  `MiddleName` varchar(20) NOT NULL,
-  `LastName` varchar(20) NOT NULL,
-  `DateOfBirth` date NOT NULL,
-  `Email` varchar(50) NOT NULL,
-  `ContactNo` int(20) NOT NULL,
-  `Remarks` varchar(100) NOT NULL,
-  `DateTimeCreated` timestamp NOT NULL DEFAULT current_timestamp(),
-  `DateTimeUpdated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `id` int(10) NOT NULL,
+  `firstName` varchar(50) NOT NULL,
+  `middleName` varchar(50) NOT NULL,
+  `lastName` varchar(50) NOT NULL,
+  `dateOfBirth` date NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `contactNo` int(20) NOT NULL,
+  `remarks` varchar(300) NOT NULL,
+  `dateTimeCreated` timestamp NOT NULL DEFAULT current_timestamp(),
+  `dateTimeUpdated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `students`
---
-
-INSERT INTO `students` (`Sid`, `FirstName`, `MiddleName`, `LastName`, `DateOfBirth`, `Email`, `ContactNo`, `Remarks`, `DateTimeCreated`, `DateTimeUpdated`) VALUES
-(120120, 'Mark Herbert', 'Paylaga', 'Francisco', '2021-09-01', 'markherbertfrancisco@gmail.com', 999999999, 'Napaka Pogi Talaga', '2021-09-26 00:37:18', '2021-09-26 00:52:36'),
-(123455, 'mark', 'pay', 'fran', '2021-08-01', 'asnjdjasdf@gmail.com', 988888888, 'asdasd', '2021-09-26 02:40:05', '2021-09-26 02:40:05');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `admin`
---
-ALTER TABLE `admin`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Indexes for table `companies`
---
-ALTER TABLE `companies`
-  ADD PRIMARY KEY (`Cid`);
-
---
 -- Indexes for table `department`
 --
 ALTER TABLE `department`
-  ADD PRIMARY KEY (`Did`),
-  ADD KEY `Sid` (`Sid`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `jobs`
 --
 ALTER TABLE `jobs`
-  ADD PRIMARY KEY (`Jid`),
-  ADD KEY `Did` (`Did`,`Cid`),
-  ADD KEY `Cid` (`Cid`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `jobs_ibfk_1` (`departmentID`),
+  ADD KEY `company` (`company`);
 
 --
 -- Indexes for table `students`
 --
 ALTER TABLE `students`
-  ADD PRIMARY KEY (`Sid`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `admin`
---
-ALTER TABLE `admin`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `companies`
---
-ALTER TABLE `companies`
-  MODIFY `Cid` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `department`
 --
 ALTER TABLE `department`
-  MODIFY `Did` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `jobs`
 --
 ALTER TABLE `jobs`
-  MODIFY `Jid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
@@ -199,15 +147,7 @@ ALTER TABLE `jobs`
 -- Constraints for table `jobs`
 --
 ALTER TABLE `jobs`
-  ADD CONSTRAINT `jobs_ibfk_1` FOREIGN KEY (`Did`) REFERENCES `department` (`Did`),
-  ADD CONSTRAINT `jobs_ibfk_2` FOREIGN KEY (`Cid`) REFERENCES `companies` (`Cid`),
-  ADD CONSTRAINT `jobs_ibfk_3` FOREIGN KEY (`Jid`) REFERENCES `admin` (`ID`);
-
---
--- Constraints for table `students`
---
-ALTER TABLE `students`
-  ADD CONSTRAINT `students_ibfk_1` FOREIGN KEY (`Sid`) REFERENCES `department` (`Sid`);
+  ADD CONSTRAINT `jobs_ibfk_1` FOREIGN KEY (`departmentID`) REFERENCES `department` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

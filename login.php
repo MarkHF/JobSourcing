@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>UM Job Sourcing</title>
+	<title>Hypertext Assassin Chat App</title>
 </head>
 
 <style type="text/css">
@@ -17,61 +17,40 @@
 	}
 
 	#wrapper{
-		max-width:1350px;
-	    min-height:600px; 
+		max-width:900px;
+	    min-height:500px; 
         margin: auto;
         color: grey;
         font-family: myFont;
         font-size: 13px;
-        background: url(ui/icons/login.png);
-        background-attachment: fixed;
+        background: url(ui/icons/peeking-ninja.png);
 		background-repeat: no-repeat;
-		background-size: 1350px 700px;
+		background-size: auto;
 	}
 
 	form{
 
+		margin: auto;
 		padding: 10px;
 		width: 100%;
-		max-width: 500px;
-        background-color: rgba(125,149,185,0.8);
-        
-        
-        
+		max-width: 400px;
 	}
 
-
-	input[type=text],input[type=password],input[type=number],input[type=date]{
+	input[type=text],input[type=password],input[type=submit]{
 
 		padding: 10px;
 		margin: 10px;
-		width: 92%;
+		width: 98%;
 		border-radius: 5px;
 		border: solid 1px grey;
 	}
 
-    select{
-    padding: 10px;
-    margin: 10px;
-    width: 96%;
-    border-radius: 5px;
-    border: solid 1px grey;
-    }
-
 	input[type=submit]{
 
-		width: 46%;
+		width: 104%;
 		cursor: pointer;
 		text-align: center;
 		padding: 10px;
-        border-radius: 5px;
-		border: solid 1px grey;
-        margin: 10px;
-        position:relative;
-        left:120px;
-        background-color:#4C9A2A;
-        color:white;
-        
 	}
 
 	input[type=radio]{
@@ -80,6 +59,15 @@
 		cursor: pointer;
 	}
 
+	#header{
+		background-color: #232b2b;
+		font-size: 50px;
+		text-align: center;
+		font-family: headFont;
+		width: 100%;
+		color: white;
+
+	}
 
 	#error{
 
@@ -89,22 +77,19 @@
 		color: white;
 	    display: none;
 	}
-    #bd{
-color:black;
-
-}
 	
 	
 </style>
 <body>
 	<div id="wrapper">
 
+		<div id="header">
+		Hypertext Assassin Chatting App
+		    <div style="font-size: 25px; font-family: myFont;">Login</div>
+	    </div>
 	    <div id = "error">Error</div>
-		<form id="myform" style = "position:relative; left:800px; top:200px;">
-        <br>
-        <br>
-        <br>
-            <input type="number" name="idnumber" placeholder="ID Number"><br>
+		<form id="myform">
+			<input type="text" name="email" placeholder="Email"><br>
 			<input type="password" name="password" placeholder="Password"><br>
 			<input type="submit" value="Login" id="login_button"><br>
 
@@ -118,4 +103,83 @@ color:black;
 
 </body>
 </html>
-</html>
+
+<script type="text/javascript">
+	
+	function _(element){
+		
+		return document.getElementById(element);
+	}
+
+	var login_button = _("login_button");
+	login_button.addEventListener("click",collect_data);
+
+	function collect_data(e){
+
+		e.preventDefault();
+		login_button.disabled = true;
+		login_button.value = "Loading....";
+
+		var myform = _("myform");
+		var inputs = myform.getElementsByTagName("INPUT");
+
+		var data = {};
+		for (var i = inputs.length - 1; i >= 0; i--) {
+			
+			var key = inputs[i].name;
+
+			switch(key){
+				
+				case "email":
+					data.email = inputs[i].value;
+					  break;	
+				
+				case "password":
+					data.password = inputs[i].value;
+					  break;	
+			}
+		}
+
+		send_data(data,"login");
+		
+	}
+
+	function send_data(data,type){
+
+		var xml = new XMLHttpRequest();
+
+		xml.onload = function(){
+
+			if(xml.readyState == 4 || xml.status == 200){
+
+				handle_result(xml.responseText);
+				login_button.disabled = false;
+				login_button.value = "Login";	
+			}
+		}
+		
+		data.data_type = type;
+		var data_string = JSON.stringify(data);
+
+		xml.open("POST","api.php",true);
+		xml.send(data_string);
+		
+	}
+
+	function handle_result(result){
+
+		var data = JSON.parse(result);
+		if(data.data_type == "info"){
+
+			window.location = "index.php";
+
+		}else{
+
+			var error = _("error");
+			error.innerHTML = data.message;
+			error.style.display = "block";
+
+		}
+	}
+
+</script>

@@ -107,13 +107,8 @@ color:black;
             <input type="text" name="lastname" placeholder="Last Name"><br>
             <label for="birthday" id="bd">Birthday:</label>
             <input type="date" name="birthday" placeholder="Birthday"><br>
+			<input type="number" name="contactNumber" placeholder="Contact Number"><br>
 			<input type="text" name="email" placeholder="Email"><br>
-            <select name="course" placeholder="Course" class="form-control">
-                <option value="0">Courses</option>
-              
-            </select>
-			
-			
 			<input type="password" name="password" placeholder="Password"><br>
 			<input type="password" name="password2" placeholder="Retype Password"><br>
 			<input type="submit" value="Sign up" id="signup_button" ><br>

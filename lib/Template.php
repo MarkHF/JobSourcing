@@ -2,21 +2,21 @@
     // Template path
     protected $template;
     // Variable pass in
-    protected $vars;
+    protected $vars = array();
     //Constructor
-    public function _construct($template){
+    public function __construct($template){
         $this->template = $template;
     }
 
-    public function _get($key){
+    public function __get($key){
         return $this->vars[$key];
     }
 
-    public function _set($key,$value){
+    public function __set($key,$value){
         $this->vars[$key] = $value;
     }
 
-    public function _toString(){
+    public function __toString(){
         extract($this->vars);
         chdir(dirname($this->template));
         ob_start();

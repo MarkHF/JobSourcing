@@ -3,21 +3,21 @@
 class Database{
     private $host = DBHOST;
     private $user = DBUSER;
-    private $pass = DBPASS
-    private $dbname = DBNAME
+    private $pass = DBPASS;
+    private $dbname = DBNAME;
 
     private $dbh;
     private $error;
     private $stmt;
 
-    public function _construct(){
-        $dsn = 'mysql:host='. $this->host .',dbname='. $this->dbname;
-        $option =array(
+    public function __construct(){
+        $dsn = 'mysql:host='. $this->host .';dbname='. $this->dbname;
+        $options =array(
             PDO::ATTR_PERSISTENT => true,
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
         );
         try {
-            $this->dbh = new PDO($dsn, $this->user, $this->pass, $option);
+            $this->dbh = new PDO($dsn, $this->user, $this->pass, $options);
         } catch (PDOException $e) {
             $this->error = $e->getMessage();
         }

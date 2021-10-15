@@ -1,7 +1,8 @@
 <footer class="footer">
-        <p>&copy; 2021 UM Job Sourcing, Inc.</p>
+        <p>&copy; 2021 Job Sourcing, Inc.</p>
       </footer>
 
     </div> <!-- /container -->
-        </body>
+ </body>
+
 </html>
