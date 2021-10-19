@@ -1,6 +1,8 @@
 <?php include_once 'config/init.php'; ?>
 
 <?php
+session_start();
+
 $job = new Job;
 
 $template = new Template('templates/jobsingle.php');

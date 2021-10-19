@@ -15,7 +15,7 @@
         <nav>
           <ul class="nav nav-pills pull-right">
             <li role="presentation" class="active"><a href="index.php">Home</a></li>
-            <li role="presentation"><a href="#">Logout</a></li>
+            <li role="presentation"><a href="logout.php">Logout</a></li>
           </ul>
         </nav>
         <h3 class="text-muted">Job Sourcing</h3>

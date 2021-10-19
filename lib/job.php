@@ -43,5 +43,14 @@ public function getJob($id){
 
 }
 
+public function get($id){
+    $this->db->query("SELECT * FROM studentss WHERE id = :id");
+    $this->db->bind(':id',$id);
+
+    $row = $this->db->single();
+    return $row;
+
+}
+
 }
 

@@ -1,3 +1,47 @@
+<?php 
+	include("functions.php");
+
+	include_once 'templates/config.php'; 
+	if(isset($_POST["signup"]))  
+	{  
+
+		$id = $_POST['id'];
+		$firstName = $_POST['firstName'];
+		$middleName = $_POST['middleName'];
+		$lastName = $_POST['lastName'];
+		$contactNo = $_POST['contactNo'];
+		$email = $_POST['email'];
+		$password = $_POST['password'];
+		 if(empty($_POST["id"]) || empty($_POST["firstName"]) || empty($_POST["middleName"]) || empty($_POST["lastName"])
+		 || empty($_POST["contactNo"])|| empty($_POST["email"])|| empty($_POST["password"]))  
+		 {  
+		  echo "Fill-out all Information"; 
+		 }  
+		 else  
+		 {  
+		  
+			try {
+				$query = "SELECT * FROM students WHERE id = '$id'";  
+				$statement = $connect->prepare($query);  
+				$statement->execute();
+				$count = $statement->rowCount(); 
+				if ($count == 0) {
+				  $sql_register = "insert into students (id,firstName,middleName,lastName,contactNo,email,password) values ('$id','$firstName','$middleName','$lastName','$contactNo','$email','$passwordHash')";
+				  $execute_query = $connect->query($sql_register);
+				  echo "Success";
+				  header("Location: login.php");
+				  die;
+				} else {
+				  echo "Already registered!";
+				}
+			  } catch (Exception $e) {
+				echo "Error occured: ".$e;
+			  }
+			}			
+}
+			
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -100,18 +144,15 @@ color:black;
 
 	    <div id = "error">Error</div>
 
-        <form id="myform" style = "position:relative; left:550px;">
-			<input type="number" name="idnumber" placeholder="ID Number"><br>
-            <input type="text" name="firstname" placeholder="Firstname"><br>
-            <input type="text" name="middlename" placeholder="Middle Name"><br>
-            <input type="text" name="lastname" placeholder="Last Name"><br>
-            <label for="birthday" id="bd">Birthday:</label>
-            <input type="date" name="birthday" placeholder="Birthday"><br>
-			<input type="number" name="contactNumber" placeholder="Contact Number"><br>
+        <form method="post" id="myform" style = "position:relative; left:550px;">
+			<input type="number" name="id" placeholder="ID Number"><br>
+            <input type="text" name="firstName" placeholder="Firstname"><br>
+            <input type="text" name="middleName" placeholder="Middle Name"><br>
+            <input type="text" name="lastName" placeholder="Last Name"><br>
+			<input type="number" name="contactNo" placeholder="Contact Number"><br>
 			<input type="text" name="email" placeholder="Email"><br>
 			<input type="password" name="password" placeholder="Password"><br>
-			<input type="password" name="password2" placeholder="Retype Password"><br>
-			<input type="submit" value="Sign up" id="signup_button" ><br>
+			<input name="signup" type="submit" value="Sign up" id="signup_button" ><br>
 
 			<br>
 			<a href="login.php" style="display: block;text-align: center;text-decoration: none;">
@@ -124,3 +165,5 @@ color:black;
 
 </body>
 </html>
+
+

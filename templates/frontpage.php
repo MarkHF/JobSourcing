@@ -1,5 +1,5 @@
-<?php include 'inc/header.php'; ?>
-     <div class="jumbotron">
+<?php include 'inc/header.php'; ?>  
+<div class="jumbotron">
        <form method="GET" action ="index.php">
             <br>
                 <input type="submit" class="btn btn-lg btn-success" value="Search">

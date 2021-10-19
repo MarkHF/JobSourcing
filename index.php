@@ -1,6 +1,10 @@
 <?php include_once 'config/init.php'; ?>
 
 <?php
+
+session_start();
+
+require_once 'functions.php';
 $job = new Job;
 $template = new Template('templates/frontpage.php');
 $department = isset($_GET['department']) ? $_GET['department'] : null;

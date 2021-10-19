@@ -11,13 +11,15 @@ class Database{
     private $stmt;
 
     public function __construct(){
+        $this->con = $this->connect();
         $dsn = 'mysql:host='. $this->host .';dbname='. $this->dbname;
-        $options =array(
-            PDO::ATTR_PERSISTENT => true,
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+        $options = array(
+            PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
         );
         try {
             $this->dbh = new PDO($dsn, $this->user, $this->pass, $options);
+
         } catch (PDOException $e) {
             $this->error = $e->getMessage();
         }
@@ -59,4 +61,70 @@ class Database{
         $this->execute();
         return $this->stmt->fetch(PDO::FETCH_OBJ);
     }
+
+    private $con;
+
+
+	private function connect()
+	{
+
+		$string = "mysql:host=localhost;dbname=joblister";	
+
+		try
+		{
+            
+            $connection = new PDO($string,DBUSER,DBPASS);
+            return $connection;
+		
+		}catch(PDOException $e)
+		{
+			echo $e->getMessage();
+			die;
+		}
+
+		return false;
+		
+	}
+
+// Write to database
+	public function write($query,$data_array = [])
+	{
+
+		$con = $this->connect();
+		$statement = $con->prepare($query);
+		$check = $statement->execute($data_array);
+		if($check) {
+
+			return true;
+			
+		}
+
+			return false;
+
+	}
+
+//Read from database
+	public function read($query,$data_array = [])
+	{
+
+		$con = $this->connect();
+		$statement = $con->prepare($query);
+		$check = $statement->execute($data_array);
+		
+		if($check) {
+
+			$result = $statement->fetchALL(PDO::FETCH_OBJ);
+			if(is_array($result) && count($result) > 0)
+			{
+				return $result;
+			}
+			return false;
+			
+		}
+
+		return false;
+
+	}
+
+
 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 15, 2021 at 10:44 AM
+-- Generation Time: Oct 19, 2021 at 07:19 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -91,13 +91,26 @@ CREATE TABLE `students` (
   `firstName` varchar(50) NOT NULL,
   `middleName` varchar(50) NOT NULL,
   `lastName` varchar(50) NOT NULL,
-  `dateOfBirth` date NOT NULL,
   `email` varchar(50) NOT NULL,
-  `contactNo` int(20) NOT NULL,
+  `contactNo` bigint(20) NOT NULL,
+  `password` varchar(20) NOT NULL,
   `remarks` varchar(300) NOT NULL,
   `dateTimeCreated` timestamp NOT NULL DEFAULT current_timestamp(),
   `dateTimeUpdated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `students`
+--
+
+INSERT INTO `students` (`id`, `firstName`, `middleName`, `lastName`, `email`, `contactNo`, `password`, `remarks`, `dateTimeCreated`, `dateTimeUpdated`) VALUES
+(1, 'haha', 'heeh', 'asldjkl', 'hsbdjsbh@gmail.com', 81234832, '202cb962ac59075b964b', '', '2021-10-19 02:24:33', '2021-10-19 02:24:33'),
+(2, 'sadas', 'asda', 'asda', 'ASDAS', 123, 'c81e728d9d4c2f636f06', '', '2021-10-19 03:52:04', '2021-10-19 03:52:04'),
+(3, '', '', '', '', 0, '3', '', '2021-10-19 04:26:59', '2021-10-19 04:26:59'),
+(11, 'haha', 'hehe', 'hihi', 'anbcfasb@gmail.com', 189237189, '962012d09b8170d912f0', '', '2021-10-19 02:20:10', '2021-10-19 02:20:10'),
+(23, 'MA YSABEL', 'PAYLAGA', 'FRANCISCO', 'mark@gmail.com', 999999999, '9887c1dd659315689e8e', '', '2021-10-19 02:09:45', '2021-10-19 02:09:45'),
+(111, 'haaha', 'asd', 'qwdnhasj', 'dsfjbhhd', 23746, '', '', '2021-10-19 04:43:53', '2021-10-19 04:43:53'),
+(123123, 'MA YSABELqweqweqwqweqw', 'PAYLAGA', 'FRANCISCO', 'mark@gmail.com', 999999999, '9887c1dd659315689e8e', '', '2021-10-19 02:09:58', '2021-10-19 02:09:58');
 
 --
 -- Indexes for dumped tables
