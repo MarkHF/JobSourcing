@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 19, 2021 at 07:19 AM
+-- Generation Time: Oct 23, 2021 at 07:57 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -20,6 +20,31 @@ SET time_zone = "+00:00";
 --
 -- Database: `joblister`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `id` int(20) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `address` varchar(100) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `userName` varchar(20) NOT NULL,
+  `password` varchar(20) NOT NULL,
+  `remarks` varchar(500) NOT NULL,
+  `dateTimeCreated` timestamp NOT NULL DEFAULT current_timestamp(),
+  `dateTimeUpdated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id`, `name`, `address`, `email`, `userName`, `password`, `remarks`, `dateTimeCreated`, `dateTimeUpdated`) VALUES
+(1, 'Mark Herbert', 'dasndbashg St. ashd', 'agahsdgaj@gmail.com', 'admin', 'admin', '', '2021-10-20 01:54:04', '2021-10-20 01:54:04');
 
 -- --------------------------------------------------------
 
@@ -58,7 +83,7 @@ CREATE TABLE `jobs` (
   `company` varchar(50) NOT NULL,
   `companyOverview` varchar(500) NOT NULL,
   `jobTitle` varchar(50) NOT NULL,
-  `time` varchar(20) NOT NULL,
+  `time` varchar(50) NOT NULL,
   `description` varchar(500) NOT NULL,
   `requirements` varchar(500) NOT NULL,
   `salary` varchar(50) NOT NULL,
@@ -78,7 +103,8 @@ INSERT INTO `jobs` (`id`, `departmentID`, `company`, `companyOverview`, `jobTitl
 (1, 1, 'Astra', 'We, at Astra (Philippines) Inc., are committed to: Develop the very best software and hardware solutions that satisfy customer requirements. Deal with customers and partners on principles of politeness, courtesy, humility and cooperation and safeguard our long-term relationships with them.', 'Junior-Programmer', 'Part-Time', 'A Computer Programmer, or Systems Programmer, writes code to help software applications operate more', '(1.) Ability to learn – being receptive to new ideas and concepts, and the commitment to practice them is what coding is all about.\r\n(2.) Work ethic – becoming a developer means lots of hard work and dedication. ...\r\n(3.) Problem-solver – You\'re going to use code to solve problems, so motivation is key!', '20k', 'Quezon City', 'mam mo', 'mama@gmail.com', '', '2021-10-13 22:21:43', '2021-10-15 06:55:20'),
 (2, 2, 'BANTAY INC', '', 'Guard', 'Full-Time', 'Security Guards duties often include securing premises and personnel by patrolling property, monitoring surveillance equipment and inspecting buildings and equipment. Security Guards duties can also access points as well as permitting or prohibiting entry.', '', '15k', 'Quezon City', 'papa mo', 'papa@gmail.com', '', '2021-10-13 22:21:43', '2021-10-15 03:54:44'),
 (3, 1, 'TECH', '', 'System Analyst', 'Full-Time', 'A Computer Programmer, or Systems Programmer, writes code to help software applications operate more', '', '25k', 'Quezon City', 'mame mo', 'mame@gmail.com', '', '2021-10-13 22:23:33', '2021-10-15 03:54:15'),
-(4, 5, 'Bangko', '', 'Taga bilang nang piso', 'Full-Time', 'Preparing accounts and tax returns. Monitoring spending and budgets. Auditing and analysing financial performance. ... Compiling and presenting financial and budget reports. Ensure that financial statements and records comply with laws and regulations.', '', '20k', 'Taguig', 'ate momo', 'ate@gmail.com', '', '2021-10-14 00:57:56', '2021-10-15 03:53:39');
+(4, 5, 'Bangko', '', 'Taga bilang nang piso', 'Full-Time', 'Preparing accounts and tax returns. Monitoring spending and budgets. Auditing and analysing financial performance. ... Compiling and presenting financial and budget reports. Ensure that financial statements and records comply with laws and regulations.', '', '20k', 'Taguig', 'ate momo', 'ate@gmail.com', '', '2021-10-14 00:57:56', '2021-10-15 03:53:39'),
+(6, 1, 'FedEx ', 'FedEx Corp. is a holding company, which engages in the provision of a portfolio of transportation, e-commerce, and business services. It operates through the following segments: FedEx Express, FedEx Ground, FedEx Freight, FedEx Services, and Corporate, Other & Eliminations.', 'Senior Programmer', 'Part-Time( M-W 5-6 Hours)', 'Warehouse Worker Job Responsibilities: Completes shipments by processing and loading orders. Prepares orders by processing requests and supply orders; pulling materials; packing boxes; placing orders in delivery area. Completes deliveries by driving truck or van to and from vendors.', '18 years of age or older. Work experience as general laborer, preferably in warehouse. Ability to operate forklift proficiently. Completion of background investigation and drug screening. Strong people skills. Good moral character.', '18k', 'Mandaluyong', 'Reyna Padala', 'mark@gmail.com', '', '2021-10-23 04:25:40', '2021-10-23 05:49:24');
 
 -- --------------------------------------------------------
 
@@ -117,6 +143,12 @@ INSERT INTO `students` (`id`, `firstName`, `middleName`, `lastName`, `email`, `c
 --
 
 --
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `department`
 --
 ALTER TABLE `department`
@@ -141,6 +173,12 @@ ALTER TABLE `students`
 --
 
 --
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `department`
 --
 ALTER TABLE `department`
@@ -150,7 +188,7 @@ ALTER TABLE `department`
 -- AUTO_INCREMENT for table `jobs`
 --
 ALTER TABLE `jobs`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables

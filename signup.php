@@ -1,5 +1,4 @@
 <?php 
-	include("functions.php");
 
 	include_once 'templates/config.php'; 
 	if(isset($_POST["signup"]))  
@@ -13,7 +12,7 @@
 		$email = $_POST['email'];
 		$password = $_POST['password'];
 		 if(empty($_POST["id"]) || empty($_POST["firstName"]) || empty($_POST["middleName"]) || empty($_POST["lastName"])
-		 || empty($_POST["contactNo"])|| empty($_POST["email"])|| empty($_POST["password"]))  
+		 || empty($_POST["contactNo"]) || empty($_POST["email"]) || empty($_POST["password"]))  
 		 {  
 		  echo "Fill-out all Information"; 
 		 }  
@@ -26,7 +25,7 @@
 				$statement->execute();
 				$count = $statement->rowCount(); 
 				if ($count == 0) {
-				  $sql_register = "insert into students (id,firstName,middleName,lastName,contactNo,email,password) values ('$id','$firstName','$middleName','$lastName','$contactNo','$email','$passwordHash')";
+				  $sql_register = "insert into students (id,firstName,middleName,lastName,contactNo,email,password) values ('$id','$firstName','$middleName','$lastName','$contactNo','$email','$password')";
 				  $execute_query = $connect->query($sql_register);
 				  echo "Success";
 				  header("Location: login.php");
