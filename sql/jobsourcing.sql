@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 24, 2021 at 05:21 AM
+-- Generation Time: Oct 24, 2021 at 05:44 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -128,6 +128,7 @@ CREATE TABLE `students` (
 --
 
 INSERT INTO `students` (`id`, `firstName`, `middleName`, `lastName`, `email`, `contactNo`, `password`, `remarks`, `dateTimeCreated`, `dateTimeUpdated`) VALUES
+(1, 'MA YSABEL', 'PAYLAGA', 'FRANCISCO', 'mark@gmail.com', 999999999, '123', '', '2021-10-24 03:37:03', '2021-10-24 03:37:03'),
 (123123, 'Mark Herbert', 'PAYLAGA', 'FRANCISCO', 'mark@gmail.com', 91234567899, '123', '', '2021-10-23 07:14:50', '2021-10-23 07:14:50');
 
 --
