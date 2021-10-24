@@ -2,5 +2,5 @@
 
 define("DBUSER", "root");
 define("DBPASS", "");
-define("DBNAME", "jobsourcing");
+define("DBNAME", "joblister");
 define("DBHOST", "LocalHost");

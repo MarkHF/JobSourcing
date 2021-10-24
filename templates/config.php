@@ -2,7 +2,7 @@
 $host = "localhost";  
  $username = "root";  
  $password = "";  
- $database = "jobsourcing";  
+ $database = "joblister";  
  $message = "";  
   
       $connect = new PDO("mysql:host=$host; dbname=$database", $username, $password);  
