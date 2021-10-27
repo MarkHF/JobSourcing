@@ -14,6 +14,7 @@
         $results = $this->db->resultSet();
         return $results;
     }
+
     
 // get Course in dropdown
 
@@ -24,6 +25,7 @@ public function getDepartment(){
     $results = $this->db->resultSet();
     return $results;
 }
+
 //Get Job by Course
 public function getByDepartment($department){
     $this->db->query("SELECT jobs.*, department.course AS dcourse FROM jobs
@@ -33,6 +35,19 @@ public function getByDepartment($department){
         $results = $this->db->resultSet();
         return $results;
     }
+
+
+//Get Job by Company
+public function getByCompany($company){
+    $this->db->query("SELECT jobs.*, department.course AS dcourse FROM jobs
+        INNER JOIN department ON jobs.departmentID = department.id WHERE jobs.company Like '%$company%' OR 
+        jobs.jobTitle Like '%$company%' ORDER BY dateTimeUpdated DESC");
+   
+    
+        $results = $this->db->resultSet();
+        return $results;
+    }
+
 //Get Job
 public function getJob($id){
     $this->db->query("SELECT * FROM jobs WHERE id = :id");
@@ -44,7 +59,7 @@ public function getJob($id){
 }
 
 public function get($id){
-    $this->db->query("SELECT * FROM studentss WHERE id = :id");
+    $this->db->query("SELECT * FROM students WHERE id = :id");
     $this->db->bind(':id',$id);
 
     $row = $this->db->single();

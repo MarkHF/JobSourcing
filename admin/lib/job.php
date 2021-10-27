@@ -8,7 +8,7 @@
 //get all job
     public function getAllJobs(){
         $this->db->query("SELECT jobs.*, department.course AS dcourse FROM jobs
-        INNER JOIN department ON jobs.departmentID = department.id ORDER BY dateTimeUpdated DESC LIMIT 5");
+        INNER JOIN department ON jobs.departmentID = department.id ORDER BY dateTimeUpdated DESC LIMIT 3");
    
     
         $results = $this->db->resultSet();
@@ -33,6 +33,17 @@ public function getByDepartment($department){
         $results = $this->db->resultSet();
         return $results;
     }
+//Get Job by Company
+public function getByCompany($company){
+    $this->db->query("SELECT jobs.*, department.course AS dcourse FROM jobs
+        INNER JOIN department ON jobs.departmentID = department.id WHERE jobs.company Like '%$company%' OR 
+        jobs.jobTitle Like '%$company%' ORDER BY dateTimeUpdated DESC");
+   
+    
+        $results = $this->db->resultSet();
+        return $results;
+    }
+
 //Get Job
 public function getJob($id){
     $this->db->query("SELECT * FROM jobs WHERE id = :id");
@@ -51,7 +62,6 @@ public function get($id){
     return $row;
 
 }
-
 
 }
 
