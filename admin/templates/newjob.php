@@ -52,7 +52,7 @@
         <label>Contact Email</label>
         <input type="text" class="form-control" name="contactEmail">
     </div>
-    <input type="submit" class="btn btn-default" value="Submit" name="submit">
+    <input type="submit" class="btn btn-default" value="Submit" name="submit" style="background-color:#2C3E50;">
 
 </form>
 

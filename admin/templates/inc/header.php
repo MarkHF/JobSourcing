@@ -7,7 +7,7 @@
      
  </head>
  <body>
- <div class="container">
+ <div class="container" style="background-color:#ECF87F;">
       <div class="header clearfix">
         <nav>
           <ul class="nav nav-pills pull-right">
@@ -16,6 +16,6 @@
           <li role="presentation"><a href="logout.php">Logout</a></li>
           </ul>
         </nav>
-        <h3 class="text-muted">Job Sourcing</h3>
+        <h3 class="text-muted" style="color:black;">Job Sourcing</h3>
       </div>
       
