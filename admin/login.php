@@ -51,7 +51,7 @@ include_once 'templates/config.php';
 	}
 	#wrapper{
 		max-width:1350px;
-	    min-height:600px; 
+	    min-height:850px; 
         margin: auto;
         color: grey;
         font-family: myFont;
@@ -59,13 +59,16 @@ include_once 'templates/config.php';
         background: url(../ui/icons/login.png);
         background-attachment: fixed;
 		background-repeat: no-repeat;
-		background-size: 1350px 700px;
+		background-size: 1350px 800px;
 	}
+
 	form{
-		padding: 10px;
+
+		padding: 15px;
 		width: 100%;
-		max-width: 500px;
+		max-width: 350px;
         background-color: rgba(125,149,185,0.8);
+        border-radius: 15px 15px 15px 15px;
         
         
         
