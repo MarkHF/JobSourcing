@@ -61,7 +61,7 @@
 
 	#wrapper{
 		max-width:1350px;
-	    min-height:2000px; 
+	    min-height:650px; 
         margin: auto;
         color: grey;
         font-family: myFont;
@@ -69,7 +69,7 @@
         background: url(ui/icons/job.gif);
 		background-attachment: fixed;
 		background-repeat: no-repeat;
-		background-size: 1350px 950px;
+		background-size: 1350px 650px;
 	}
 
 	form{
@@ -111,7 +111,7 @@
 		border: solid 1px grey;
         margin: 10px;
         position:relative;
-        left:120px;
+        left:90px;
         background-color:#4C9A2A;
         color:white;
         
@@ -145,7 +145,7 @@ color:black;
 
 	    <div id = "error">Error</div>
 
-        <form method="post" id="myform" style = "position:relative; left:550px;">
+        <form method="post" id="myform" style = "position:relative; left:500px; top:100px;">
 			<input type="number" name="id" placeholder="ID Number"><br>
             <input type="text" name="firstName" placeholder="Firstname"><br>
             <input type="text" name="middleName" placeholder="Middle Name"><br>
@@ -157,7 +157,7 @@ color:black;
 
 			<br>
 			<a href="login.php" style="display: block;text-align: center;text-decoration: none;">
-				Already have an Account? <u>Login here..</u>
+				Already have an Account? <u>Login here</u>.
 			</a>
 
 		</form>
