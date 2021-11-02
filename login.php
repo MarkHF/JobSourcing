@@ -45,13 +45,15 @@ include_once 'templates/config.php';
 		font-family: headFont;
 		src: url(ui/fonts/Assassin.ttf);
 	}
+
 	@font-face{
 		font-family: myFont;
 		src: url(ui/fonts/OpenSans-Regular.ttf);
 	}
+
 	#wrapper{
 		max-width:1350px;
-	    min-height:600px; 
+	    min-height:850px; 
         margin: auto;
         color: grey;
         font-family: myFont;
@@ -59,24 +61,30 @@ include_once 'templates/config.php';
         background: url(ui/icons/login.png);
         background-attachment: fixed;
 		background-repeat: no-repeat;
-		background-size: 1350px 700px;
+		background-size: 1350px 800px;
 	}
+
 	form{
-		padding: 10px;
+
+		padding: 15px;
 		width: 100%;
-		max-width: 500px;
+		max-width: 350px;
         background-color: rgba(125,149,185,0.8);
-        
-        
+        border-radius: 15px 15px 15px 15px;
+
         
 	}
+
+
 	input[type=text],input[type=password],input[type=number],input[type=date]{
-		padding: 10px;
+
+		padding: 8px;
 		margin: 10px;
 		width: 92%;
 		border-radius: 5px;
 		border: solid 1px grey;
 	}
+
     select{
     padding: 10px;
     margin: 10px;
@@ -84,7 +92,9 @@ include_once 'templates/config.php';
     border-radius: 5px;
     border: solid 1px grey;
     }
+
 	input[type=submit]{
+
 		width: 46%;
 		cursor: pointer;
 		text-align: center;
@@ -93,16 +103,21 @@ include_once 'templates/config.php';
 		border: solid 1px grey;
         margin: 10px;
         position:relative;
-        left:120px;
+        left:80px;
         background-color:#4C9A2A;
         color:white;
         
 	}
+
 	input[type=radio]{
+
 		transform: scale(1.2);
 		cursor: pointer;
 	}
+
+
 	#error{
+
 		text-align: center;
 		padding: 0.5em;
 		background-color: #ff5252;
@@ -111,6 +126,7 @@ include_once 'templates/config.php';
 	}
     #bd{
 color:black;
+
 }
 	
 	
@@ -122,12 +138,12 @@ color:black;
         <br>
         <br>
         <br>
-            <input type="number" name="id" placeholder="ID Number"><br>
+            <input type="number" name="idnumber" placeholder="ID Number"><br>
 			<input type="password" name="password" placeholder="Password"><br>
 			<input name="login" type="submit" value="Login" id="login_button"><br>
 			<br>
 			<a href="signup.php" style="display: block;text-align: center;text-decoration: none;">
-				Don't have an Account? Signup here..
+				Don't have an Account? <u>Sign up here..</u>
 			</a>
 		</form>
 			
