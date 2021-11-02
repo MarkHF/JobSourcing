@@ -60,25 +60,26 @@
 	}
 
 	#wrapper{
-		max-width:auto;
-	    min-height:auto; 
+		max-width:1350px;
+	    min-height:2000px; 
         margin: auto;
         color: grey;
         font-family: myFont;
         font-size: 13px;
         background: url(ui/icons/job.gif);
+		background-attachment: fixed;
 		background-repeat: no-repeat;
-		background-size: 1350px 500px;
+		background-size: 1350px 950px;
 	}
 
 	form{
 
-		padding: 10px;
+		padding: 15px;
 		width: 100%;
-		max-width: 500px;
+		max-width: 350px;
         background-color: rgba(125,149,185,0.8);
-        
-        
+        border-radius: 15px 15px 15px 15px;
+
         
 	}
 
@@ -138,6 +139,7 @@ color:black;
 	
 	
 </style>
+
 <body>
 	<div id="wrapper">
 
@@ -155,7 +157,7 @@ color:black;
 
 			<br>
 			<a href="login.php" style="display: block;text-align: center;text-decoration: none;">
-				Already have an Account? Login here..
+				Already have an Account? <u>Login here..</u>
 			</a>
 
 		</form>
