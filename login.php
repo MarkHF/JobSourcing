@@ -58,7 +58,7 @@ include_once 'templates/config.php';
         color: grey;
         font-family: myFont;
         font-size: 13px;
-        background: url(ui/icons/login.png);
+        background: url(../ui/icons/login.png);
         background-attachment: fixed;
 		background-repeat: no-repeat;
 		background-size: 1350px 800px;
