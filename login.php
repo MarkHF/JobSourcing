@@ -53,12 +53,12 @@ include_once 'templates/config.php';
 
 	#wrapper{
 		max-width:1350px;
-	    min-height:850px; 
+	    min-height:650px; 
         margin: auto;
         color: grey;
         font-family: myFont;
         font-size: 13px;
-        background: url(../ui/icons/login.png);
+        background: url(ui/icons/login.png);
         background-attachment: fixed;
 		background-repeat: no-repeat;
 		background-size: 1350px 800px;
@@ -143,7 +143,7 @@ color:black;
 			<input name="login" type="submit" value="Login" id="login_button"><br>
 			<br>
 			<a href="signup.php" style="display: block;text-align: center;text-decoration: none;">
-				Don't have an Account? <u>Sign up here..</u>
+				Don't have an Account? <u>Sign up here</u>.
 			</a>
 		</form>
 			
