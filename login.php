@@ -138,7 +138,7 @@ color:black;
         <br>
         <br>
         <br>
-            <input type="number" name="idnumber" placeholder="ID Number"><br>
+            <input type="number" name="id" placeholder="ID Number"><br>
 			<input type="password" name="password" placeholder="Password"><br>
 			<input name="login" type="submit" value="Login" id="login_button"><br>
 			<br>
