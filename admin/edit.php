@@ -1,11 +1,9 @@
+<?php include_once '../config/init.php'; ?>
+
 <?php
 
 session_start();
-require 'templates/config.php';
-require 'lib/job.php';
-require 'lib/database.php';
-require 'config/config.php';
-require 'lib/Template.php';
+require '../templates/config.php';
 require_once 'functions.php';
 
 

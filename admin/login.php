@@ -1,7 +1,7 @@
 
 <?php  
  session_start(); 
-include_once 'templates/config.php';    
+include_once '../templates/config.php';    
  
 		   if(isset($_POST["login"]))  
       {  

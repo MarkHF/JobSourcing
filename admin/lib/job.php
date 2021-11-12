@@ -15,6 +15,28 @@
         return $results;
     }
     
+//get Next job
+public function getNext($next){
+    $this->db->query("SELECT jobs.*, department.course AS dcourse FROM jobs
+        INNER JOIN department ON jobs.departmentID = department.id WHERE jobs.departmentID > $next ORDER BY dateTimeUpdated ASC");
+   
+    
+        $results = $this->db->resultSet();
+        return $results;
+
+
+    $results = $this->db->resultSet();
+    return $results;
+}
+//get Prev job
+public function getPrev($prev){
+    $this->db->query("SELECT jobs.*, department.course AS dcourse FROM jobs
+        INNER JOIN department ON jobs.departmentID = department.id WHERE jobs.departmentID < $prev ORDER BY dateTimeUpdated DESC");
+   
+    
+        $results = $this->db->resultSet();
+        return $results;
+}
 // get Course in dropdown
 
 public function getDepartment(){

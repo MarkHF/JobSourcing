@@ -3,37 +3,37 @@
  session_start(); 
 include_once 'templates/config.php';    
  
-		   if(isset($_POST["login"]))  
-      {  
-           if(empty($_POST["id"]) || empty($_POST["password"]))  
-           {  
-			echo "ID Number and Password Required"; 
-           }  
-           else  
-           {  
-			
-                $query = "SELECT * FROM students WHERE id = :id AND password = :password";  
-                $statement = $connect->prepare($query);  
-                $statement->execute(  
-                     array(  
-                          'id'     =>     $_POST["id"],  
-                          'password'     =>     $_POST["password"]  
-                     )  
-                );  
-                $count = $statement->rowCount();  
-                if($count > 0)  
-                {  
-                     $_SESSION["id"] = $_POST["id"];  
-                     header("location:index.php");  
-                }  
-                else  
-                {  
-                     echo "Wrong ID Number Or Password";  
-                }  
-           }  
-      }  
- 
- ?>  
+if(isset($_POST["login"]))  
+{  
+	 if(empty($_POST["id"]) || empty($_POST["password"]))  
+	 {  
+	  echo "ID Number and Password Required"; 
+	 }  
+	 else  
+	 {  
+	  
+		  $query = "SELECT * FROM students WHERE id = :id AND password = :password";  
+		  $statement = $connect->prepare($query);  
+		  $statement->execute(  
+			   array(  
+					'id'     =>     $_POST["id"],  
+					'password'     =>     $_POST["password"]  
+			   )  
+		  );  
+		  $count = $statement->rowCount();  
+		  if($count > 0)  
+		  {  
+			   $_SESSION["id"] = $_POST["id"];  
+			   header("location:index.php");  
+		  }  
+		  else  
+		  {  
+			   echo "Wrong ID Number Or Password";  
+		  }  
+	 }  
+}  
+
+?>   
  <!DOCTYPE html>
 <html>
 <head>

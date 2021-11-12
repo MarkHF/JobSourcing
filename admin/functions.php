@@ -1,5 +1,5 @@
 <?php
-require 'templates/config.php';
+require '../templates/config.php';
 
 	if(isset($_SESSION['userName']))
 	{

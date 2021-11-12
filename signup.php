@@ -1,7 +1,7 @@
 <?php 
 
-	include_once 'templates/config.php'; 
-	if(isset($_POST["signup"]))  
+include_once 'templates/config.php'; 
+if(isset($_POST["signup"]))  
 	{  
 
 		$id = $_POST['id'];

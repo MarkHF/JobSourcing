@@ -29,6 +29,9 @@
       </div>
       <?php endforeach; ?>
        <div>
+       <input type="submit"  name="next" class="btn btn-md btn-default" style="background-color:#2C3E50;" value="Next">
+       <input type="submit"  name="prev" class="btn btn-md btn-default" style="background-color:#2C3E50;" value="Prev">
+         
       </div>
 
       

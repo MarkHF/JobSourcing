@@ -1,9 +1,9 @@
-<?php include_once 'config/init.php'; ?>
+<?php include_once '../config/init.php'; ?>
 
 <?php
 session_start();
 require_once 'functions.php';
-require 'templates/config.php';
+require '../templates/config.php';
 $job = new Job;
 
 if(isset($_POST['delID'])){
